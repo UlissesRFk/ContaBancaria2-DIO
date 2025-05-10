@@ -23,16 +23,16 @@ public class ContaPoupanca implements Conta {
     }
 
     public void depositar(double valor) {
-        double novoValor = getValorNaConta() + valor;
-        System.out.println("Valor adicionado: " + valor + "\nValor da Conta: " + novoValor);
+        this.valorNaConta += valor;
+        System.out.println("Valor adicionado: " + valor + "\nValor da Conta: " + this.valorNaConta);
     }
 
     public void sacar(double valor) {
         if (getValorNaConta() == 0) {
             System.out.println("Sua conta está vazia!");
         } else {
-            double novoValor = getValorNaConta() - valor;
-            System.out.println("Valor adicionado: " + valor + "\nValor da Conta: " + novoValor);
+            this.valorNaConta -= valor;
+            System.out.println("Valor adicionado: " + valor + "\nValor da Conta: " + this.valorNaConta);
         }
     }
 
@@ -43,6 +43,7 @@ public class ContaPoupanca implements Conta {
 
         else {
             this.sacar(valor);
+            System.out.println("================ Conta Transferida ================");
             numeroConta.depositar(valor);
         }
     }

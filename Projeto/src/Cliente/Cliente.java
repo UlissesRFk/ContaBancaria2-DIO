@@ -3,7 +3,7 @@ package Cliente;
 public class Cliente {
     private String nome;
 
-    public String getNome() {
+    public String getNome(String nome2) {
         return nome;
     }
 

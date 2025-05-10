@@ -25,16 +25,16 @@ public class ContaCorrente implements Conta {
     }
 
     public void depositar(double valor) {
-        double novoValor = getValorNaConta() + valor;
-        System.out.println("Valor adicionado: " + valor + "\nValor da Conta: " + novoValor);
+        this.valorNaConta += valor;
+        System.out.println("Valor adicionado: " + valor + "\nValor da Conta: " + this.valorNaConta);
     }
 
     public void sacar(double valor) {
         if (getValorNaConta() == 0) {
             System.out.println("Sua conta está vazia!");
         } else {
-            double novoValor = getValorNaConta() - valor;
-            System.out.println("Valor adicionado: " + valor + "\nValor da Conta: " + novoValor);
+            this.valorNaConta -= valor;
+            System.out.println("Valor sacado: " + valor + "\nValor da Conta: " + this.valorNaConta);
         }
     }
 
@@ -45,6 +45,7 @@ public class ContaCorrente implements Conta {
 
         else {
             this.sacar(valor);
+            System.out.println("================ Conta Transferida ================");
             numeroConta.depositar(valor);
         }
     }
@@ -52,50 +53,49 @@ public class ContaCorrente implements Conta {
     public void pedirChequeEspecial() {
         Scanner opicao = new Scanner(System.in);
         double valorAdicionado;
-        if (getValorNaConta() == 0)
+        if (this.valorNaConta == 0)
             System.out.println("Sua conta esta zerada, poranto, não é possível fazer o cheque");
         else {
-            if (getValorNaConta() > 1000) {
+            if (this.valorNaConta > 1000 && this.valorNaConta <= 2000) {
                 valorAdicionado = 500;
-                System.out.println("Você pode fazer um chque de 500 reais!");
-                System.out.println("Deseja fazer?");
-                String SimNao = opicao.nextLine();
+                System.out.println("Você pode fazer um cheque de 500 reais!");
+                System.out.println("Deseja fazer? \n1 - Sim\n2 - não\n|Digite o numero:");
+                int SimNao = opicao.nextInt();
                 switch (SimNao) {
-                    case "Sim":
-                        double novoValor = getValorNaConta() + valorAdicionado;
-                        System.out.println("O saldo da sua conta agora é: " + novoValor
+                    case 1:
+                        this.valorNaConta += valorAdicionado;
+                        System.out.println("O saldo da sua conta agora é: " + this.valorNaConta
                                 + "\nFoi adicionado um valor de cheque de: " + valorAdicionado);
                         break;
-
-                    case "Não":
+                    case 2:
                         break;
                 }
-            } else if (getValorNaConta() <= 1000 && getValorNaConta() >= 100) {
+            } else if (this.valorNaConta <= 1000 && this.valorNaConta >= 1) {
                 valorAdicionado = 200;
-                System.out.println("Você pode fazer um chque de 500 reais!");
-                System.out.println("Deseja fazer?");
-                String SimNao = opicao.nextLine();
+                System.out.println("Você pode fazer um cheque de 500 reais!");
+                System.out.println("Deseja fazer? \n1 - Sim\n2 - não\n|Digite o numero:");
+                int SimNao = opicao.nextInt();
                 switch (SimNao) {
-                    case "Sim":
-                        double novoValor = getValorNaConta() + valorAdicionado;
-                        System.out.println("O saldo da sua conta agora é: " + novoValor
+                    case 1:
+                        this.valorNaConta += valorAdicionado;
+                        System.out.println("O saldo da sua conta agora é: " + this.valorNaConta
                                 + "\nFoi adicionado um valor de cheque de: " + valorAdicionado);
                         break;
-                    case "Não":
+                    case 2:
                         break;
                 }
             } else {
                 valorAdicionado = 1000;
-                System.out.println("Você pode fazer um chque de 1000 reais!");
-                System.out.println("Deseja fazer?");
-                String SimNao = opicao.nextLine();
+                System.out.println("Você pode fazer um cheque de 1000 reais!");
+                System.out.println("Deseja fazer? \n1 - Sim\n2 - não\n|Digite o numero:");
+                 int SimNao = opicao.nextInt();
                 switch (SimNao) {
-                    case "Sim":
-                        double novoValor = getValorNaConta() + valorAdicionado;
-                        System.out.println("O saldo da sua conta agora é: " + novoValor
+                    case 1:
+                        this.valorNaConta += valorAdicionado;
+                        System.out.println("O saldo da sua conta agora é: " + this.valorNaConta
                                 + "\nFoi adicionado um valor de cheque de: " + valorAdicionado);
                         break;
-                    case "Não":
+                    case 2:
                         break;
                 }
             }
